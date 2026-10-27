@@ -47,3 +47,18 @@ node --test checks/model.test.mjs
 ```
 
 All 16 checks passed. Vercel steps are in the [README](../README.md); the user will perform deployment.
+
+## Record verified publication
+
+The first push and remote check matched `f5cc9725ea37654a62c82b24ba73ab5e2e2671d9`. Record that outcome with a documentation-only follow-up:
+
+```powershell
+git add docs/work-log.md docs/push-commands.md
+git diff --cached --check
+git commit -m "Record verified source publication"
+git push origin main
+git fetch origin main
+git rev-parse HEAD
+git rev-parse origin/main
+git status --short
+```
