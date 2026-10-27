@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b152b">
+  <meta name="description" content="An independent Ziki interaction prototype: question an agent's understanding, correct its direction, and agree on a revised plan before work resumes.">
+  <title>Ziki · Review understanding</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to prototype</a>
+  <header class="nav"><div class="nav-inner">
+    <a class="brand" href="#prototype" aria-label="Ziki prototype home"><img src="logo.svg" alt="">ziki</a>
+    <span class="nav-divider"></span><span class="workspace-name">Zedu <span class="muted">⌄</span></span>
+    <span class="product-pill"><span>◉</span> Product</span><span class="nav-extra">Marketing</span><span class="nav-extra">Security</span>
+    <span class="nav-spacer"></span><span class="demo-account"><span class="avatar">D</span> Demo workspace</span>
+    <button class="icon-button" id="theme" aria-label="Switch to light mode" title="Switch theme">☼</button>
+  </div></header>
+  <section class="introduction" aria-labelledby="intro-title"><div>
+    <p class="eyebrow">HUMAN + AGENT INTERACTION <span class="eyebrow-line"></span> A FOCUSED ZIKI PROPOSAL</p>
+    <h1 id="intro-title">Before you approve,<br>get on the same page<span class="blue">.</span></h1>
+    <p class="intro-copy">Question the understanding. Correct the direction.<br class="desktop-break"> Agree on what happens next.</p>
+  </div><div class="intro-aside">
+    <div class="flow-label"><span class="flow-number">01</span><span>Understand</span><span class="flow-arrow">↗</span></div>
+    <div class="flow-label"><span class="flow-number">02</span><span>Challenge & correct</span><span class="flow-arrow">↗</span></div>
+    <div class="flow-label"><span class="flow-number">03</span><span>Agree & continue</span><span class="flow-check">✓</span></div>
+    <p>One issue. One shared understanding.</p>
+  </div></section>
+  <div class="presentation-bar"><div class="presentation-inner">
+    <nav class="view-switch" aria-label="Presentation views">
+      <button data-view="prototype" class="selected" aria-pressed="true">Try the proposal</button>
+      <button data-view="current" aria-pressed="false">Current pattern</button>
+      <button data-view="reasoning" aria-pressed="false">Why this change</button>
+    </nav>
+    <span class="sample-label"><span class="sample-dot"></span> Interactive prototype · sample data</span>
+  </div></div>
+  <main id="main" tabindex="-1"></main>
+  <footer><span><img src="logo.svg" alt=""> An independent Ziki interaction proposal</span><span>No live agents or Ziki changes. <a href="https://ziki.dev" target="_blank" rel="noreferrer">Original Ziki ↗</a></span></footer>
+  <div id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

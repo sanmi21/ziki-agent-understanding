@@ -1,0 +1,11 @@
+{
+  "name": "ziki-shared-understanding",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node serve.mjs",
+    "test": "node --test checks/*.test.mjs",
+    "check": "node --check dist/app.js && node --check dist/model.js && node --check serve.mjs"
+  }
+}
