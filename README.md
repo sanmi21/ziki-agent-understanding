@@ -50,9 +50,18 @@ npm test
 
 Browser regression workflow: perform the six steps above; use Evidence and Changes; correct an already approved plan and verify approval clears; reload to restore tab progress; reset; repeat at phone width and in light mode. Use keyboard Tab and arrow keys on the review tabs. All 16 automated checks and syntax checks passed. The desktop browser completed the main exchange through reopening, restored state after reload, and visually checked light mode. Phone-width visual verification remains outstanding. Details are in the [work log](docs/work-log.md).
 
-## Vercel deployment
+## Vercel deployment — user-operated
 
-Import this project repository into Vercel. Root directory: `./`. Framework: Other. The tracked [vercel.json](vercel.json) supplies an empty build command and output directory `dist`. No environment variables are required. Deployment status and the actual URL will be recorded only after a successful deployment is verified.
+Source repository: [sanmi21/ziki-agent-understanding](https://github.com/sanmi21/ziki-agent-understanding).
+
+1. In Vercel, choose **Add New → Project** and import `sanmi21/ziki-agent-understanding`.
+2. Set **Framework Preset** to **Other** and keep **Root Directory** as `./`.
+3. Confirm **Build Command** is empty (enable its override if needed) and **Output Directory** is `dist`. The tracked [vercel.json](vercel.json) already declares these settings.
+4. No environment variables or custom install command are required. This project has no dependencies and no build step.
+5. Click **Deploy** yourself. When Vercel reports Ready, open its generated URL.
+6. Verify all three presentation views, then complete the review/correction/approval/result flow. Check light mode and reset the demo.
+
+The user requested deployment instructions only. No deployment has been performed or verified by Codex. See [push-commands.md](docs/push-commands.md) for the source publication commands.
 
 ## Limitations and attribution
 
