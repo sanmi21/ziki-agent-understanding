@@ -2,6 +2,12 @@
 
 A focused, independent human–agent interaction prototype. A person can inspect an agent's understanding, challenge an assumption, correct its direction, and confirm a revised plan before authorizing work.
 
+## Submission positioning
+
+This is a proposed interaction improvement to Ziki's existing human–agent workflow. Ziki already has owner messages/instructions, questions/escalations, issue discussions, and separate pipeline approvals. The contribution is an issue-specific structured review that makes assumptions, corrections, plan changes, and approval scope easier to inspect. It is not a new underlying messaging system, a production integration, or a measured reduction in errors.
+
+Live submission: https://ziki-agent-understanding.vercel.app/ — the existing deployed main workflow was browser-verified on 28 October 2026. Local packaging edits require a subsequent source push before they appear live. See [submission text and demo script](docs/submission.md).
+
 ## Implemented features
 
 - Screenshot-matched Ziki Inbox composition on **Try the proposal**: app-first header, toolbar, status navigation, Inbox explanation with agent panel, three Inbox lists, and a sample request. Presentation navigation sits below the app. Only the screens relevant to this proposal are recreated.

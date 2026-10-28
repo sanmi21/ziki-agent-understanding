@@ -38,3 +38,14 @@
 - Objective: user authorized pushing the pending Inbox layout and direct-approval changes to update the connected live site. Use the existing `main` branch and supplied repository; do not create a separate deployment.
 - Verification: inspected pending files and branch/remote, fetched `origin/main`, and confirmed no divergence. All three syntax checks, all 21 automated checks, and the whitespace check passed. Prior browser checks cover the reference Inbox and both approval outcomes.
 - Publication checkpoint: commit the matched layout, direct/reviewed approval, consequences and recovery, documentation, and screenshots as `Match Ziki Inbox and add direct approval simulations`, then push `origin main`. Git commands are recorded in [push-commands.md](push-commands.md). Final remote verification will be reported in chat; a live Vercel deployment is not claimed without separate evidence.
+
+
+## 2026-10-28 — Submission packaging under the deadline
+
+- Objective: package the existing working proposal clearly for the human–agent interaction assignment, without adding major features or claiming a production fix. User supplied the live URL `https://ziki-agent-understanding.vercel.app/`. Preserve current functionality and no-manual-deployment preference.
+- Checkpoint 1 — Evidence: further live inspection confirmed existing Messages and instructions, Inbox requests, and Activity & Approvals with separate escalation replies and admin pipeline gates. Update the comparison and reasoning to acknowledge those existing capabilities, distinguish the proposed structured UI, and avoid claims that questions/approvals were absent. Live deployed original-plan approval and consequence flow verified.
+
+- Checkpoint 2 — Implementation and documentation: corrected the Current pattern and Why this change views and approval note in `dist/app.js`; updated README positioning; added [submission.md](submission.md) with paste-ready text, a two-minute demonstration, and anticipated questions. No workflow logic changed.
+- Checkpoint 3 — Verification: `npm run check` passed; all 21 `npm test` checks passed; `git diff --check` passed. Inspected the local comparison view in the browser and captured [submission-positioning.png](submission-positioning.png). The deployed original-plan approval and consequence were checked before these wording changes.
+- Publication: user explicitly authorized committing and pushing the final package to existing `main`. No manual deployment command will run; the connected Vercel project may deploy the source update. Commands are recorded in [push-commands.md](push-commands.md).
+- Outcome: submission package ready; production agent execution and permission enforcement remain outside this scripted prototype. Remote push verification will be reported in the handoff.
