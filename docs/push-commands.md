@@ -62,3 +62,26 @@ git rev-parse HEAD
 git rev-parse origin/main
 git status --short
 ```
+
+## Updated Inbox and approval simulation — 2026-10-28
+
+Checks: all three JavaScript syntax checks and all 21 automated checks passed. The user authorized a push to update the connected live site.
+
+```powershell
+git status --short
+git branch --show-current
+git remote -v
+git diff --check
+git fetch origin main
+git rev-list --left-right --count HEAD...origin/main
+git add README.md checks dist docs serve.mjs
+git diff --cached --check
+git commit -m "Match Ziki Inbox and add direct approval simulations"
+git push origin main
+git fetch origin main
+git rev-parse HEAD
+git rev-parse origin/main
+git status --short
+```
+
+This pushes source only. No independent deployment command is run.

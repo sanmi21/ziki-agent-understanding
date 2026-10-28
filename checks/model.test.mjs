@@ -6,9 +6,10 @@ const correct=state=>transition(state,{type:'correct',text:'Keep all fields and 
 function revised(){return transition(correct(initialState()),{type:'recheck'});}
 function agreed(){let state=revised();for(const name of checks)state=transition(state,{type:'check',name,checked:true});return transition(state,{type:'agree'});}
 
-test('original proposal cannot be authorized or completed directly',()=>{
+test('direct approval is available while completion still requires an approved plan',()=>{
   const state=initialState();
-  for(const type of ['approve','agree','complete','recheck'])assert.equal(transition(state,{type}),state);
+  for(const type of ['agree','complete','recheck'])assert.equal(transition(state,{type}),state);
+  const direct=transition(state,{type:'approve'});assert.equal(direct.phase,'working');assert.equal(direct.approvalMode,'direct');assert.equal(direct.approvedVersion,1);
 });
 test('a correction pauses work and records the exact human direction',()=>{
   const text='Keep signup validation. Layout only.';
@@ -37,7 +38,7 @@ test('unchecking a constraint blocks confirmation again',()=>{
 });
 test('agreement is separate from permission to work',()=>{
   const state=agreed();assert.equal(state.phase,'agreed');assert.equal(state.approvedVersion,null);
-  const approved=transition(state,{type:'approve'});assert.equal(approved.phase,'working');assert.equal(approved.approvedVersion,2);
+  const approved=transition(state,{type:'approve'});assert.equal(approved.phase,'working');assert.equal(approved.approvedVersion,2);assert.equal(approved.approvalMode,'reviewed');
 });
 test('correction of an approved plan invalidates approval and checks',()=>{
   const approved=transition(agreed(),{type:'approve'});const state=correct(approved);
@@ -68,6 +69,27 @@ test('broken, unexpected, or stale storage resets safely',()=>{
 });
 test('public demo assets exist and Vercel serves only the static output',async()=>{
   const html=await readFile(new URL('../dist/index.html',import.meta.url),'utf8');
-  for(const asset of ['app.js','styles.css','logo.svg']){assert.ok(html.includes(asset));await readFile(new URL('../dist/'+asset,import.meta.url));}
+  for(const asset of ['app.js','styles.css','prototype.css','logo.svg']){assert.ok(html.includes(asset));await readFile(new URL('../dist/'+asset,import.meta.url));}
   const config=JSON.parse(await readFile(new URL('../vercel.json',import.meta.url),'utf8'));assert.equal(config.outputDirectory,'dist');assert.equal(config.buildCommand,'');
+});
+
+test('a corrected plan can also be approved directly without checklist confirmation',()=>{
+  const state=transition(revised(),{type:'approve'});
+  assert.equal(state.phase,'working');assert.equal(state.version,2);assert.equal(state.approvalMode,'direct');assert.deepEqual(state.confirmed,[]);
+  assert.equal(transition(state,{type:'complete'}).phase,'delivered');
+});
+test('direct approval and its sample result survive reload without inventing confirmations',()=>{
+  const state=transition(initialState(),{type:'approve'});
+  assert.deepEqual(restoreState(JSON.stringify(state)),state);
+  const done=transition(state,{type:'complete'});assert.deepEqual(restoreState(JSON.stringify(done)),done);
+});
+test('pausing a directly approved wrong plan clears authorization and records why',()=>{
+  const state=transition(transition(initialState(),{type:'approve'}),{type:'pause'});
+  assert.equal(state.phase,'rechecking');assert.equal(state.approvedVersion,null);assert.equal(state.approvalMode,null);assert.match(state.corrections[0].text,/layout-only/);
+});
+test('approval is unavailable while an agent is re-evaluating a correction',()=>{
+  const state=correct(initialState());assert.equal(transition(state,{type:'approve'}),state);
+});
+test('correcting a directly approved plan clears its approval route',()=>{
+  const state=correct(transition(revised(),{type:'approve'}));assert.equal(state.approvalMode,null);assert.equal(state.approvedVersion,null);
 });
