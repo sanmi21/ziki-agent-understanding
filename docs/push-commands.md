@@ -171,3 +171,26 @@ git rev-parse HEAD
 git rev-parse origin/main
 git status --short
 ```
+
+
+## First-load clarity — 2026-10-29
+
+```powershell
+git status --short
+git branch --show-current
+git fetch origin main
+git rev-list --left-right --count HEAD...origin/main
+npm run check
+npm test
+git diff --check
+git add README.md dist/app.js dist/index.html dist/styles.css docs
+git diff --cached --check
+git commit -m "Explain visual feedback on first load"
+git push origin main
+git fetch origin main
+git rev-parse HEAD
+git rev-parse origin/main
+git status --short
+```
+
+No deployment command is used; source updates use the existing GitHub/Vercel connection.

@@ -58,3 +58,13 @@ Run npm run check and npm test. Record actual browser results and outstanding li
 All 23 automated checks and JavaScript syntax checks passed. Browser testing covered the main exchange, both scope choices, custom answers, reopening, multiple pins, edit/removal/undo, image-version anchoring, reload persistence, keyboard sending, zoom positioning, and desktop/phone dark/light layouts. There was no horizontal phone-page overflow and no captured browser console errors. These checks do not constitute an assistive-technology audit or usability study.
 
 Visual references: [first use](point-and-reply-empty.png), [feedback exchange](point-and-reply-feedback.png), [comparison](point-and-reply-comparison.png), [light theme](point-and-reply-light.png).
+
+## First-load explanation and demo entry
+
+On every page load, a visible introduction leads with “Give your agent feedback, right on their screenshot.” It explains that screenshot sharing already exists in Ziki and that the proposed addition is pinned feedback and a conversation beside the image. A before/after comparison and three short steps introduce the mechanism. A visible note identifies the signup attachment as sample work and the agent replies/revisions as simulated.
+
+Try the demo opens an editable example note against the button region; it does not send feedback automatically. The introduction compacts to free workspace space. About this proposal expands it again. Continue the demo preserves an in-memory feedback draft or resumes existing sent feedback; reload shows the full explanation again. Reset clears the demo after confirmation and restores the full introduction.
+
+Check the initial URL with no hash and with #review, on desktop and phone. The headline and start/continue action should be visible without scrolling on the checked phone viewport. Start, edit the example, reopen the explanation, and continue; the edited draft must remain. Send feedback, reload, and continue; the sent note must remain.
+
+First-load visual QA: [desktop](first-impression-desktop.png) and [phone](first-impression-phone.png). At the checked 390×844 viewport, the full proposal headline and demo action are visible without scrolling; both themes were inspected.

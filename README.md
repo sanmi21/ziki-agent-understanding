@@ -4,6 +4,8 @@ A focused UI proposal for human–agent visual feedback in Ziki. Select an area 
 
 ## Implemented features
 
+- A visible first-load explanation states the Ziki UI proposal, shows the before/after interaction, and distinguishes the sample signup work from the feedback UI. Try the demo opens an editable example; Continue resumes existing feedback. The introduction compacts during interaction and can be reopened.
+
 - Ziki-style issue context and an integrated screenshot workspace. Close the viewer to see the issue and its linked feedback conversations.
 - Click to place a pin or drag a region. A named-area picker provides a keyboard-friendly alternative.
 - Editable feedback before sending; pending feedback can also be edited or removed, with undo for removal.
@@ -25,7 +27,7 @@ Open http://127.0.0.1:4180/. The server binds to this computer only. Opening ind
 
 ## Usage
 
-1. Choose **Try the button area**, select a named area with **Choose an area**, or click/drag on the screenshot.
+1. Read the short introduction, then choose **Try the demo** to open a selected area and an editable example note. Alternatively, choose **Try the button area**, use **Choose an area**, or click/drag on the screenshot. **Continue the demo** resumes feedback already in this tab; it does not reset it.
 2. Type feedback or choose **Use example feedback**, then **Send to agent**. Ctrl/Cmd+Enter also sends the feedback.
 3. The scripted agent asks how broadly it may adjust the layout. Choose **Only the selected area**, **The surrounding layout too**, or type your own direction.
 4. A sample revision appears. Switch between Original and Revision or choose **Compare images**.

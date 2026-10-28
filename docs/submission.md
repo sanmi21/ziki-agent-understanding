@@ -18,8 +18,8 @@ Source: https://github.com/sanmi21/ziki-agent-understanding
 
 ## A 90-second demonstration
 
-1. **Problem (15 seconds):** Close the viewer to show the issue and attachment. Explain: “Instead of describing where I mean, I can point to the work.”
-2. **Point (15 seconds):** Open the attachment. Choose Try the button area or drag around the button. Enter feedback or use the example.
+1. **Problem (15 seconds):** Open the URL. The first-screen headline explains screenshot feedback for agents, with a Before / With this UI comparison. Explain: “Ziki already supports screenshots. Our change lets me point to the part I mean and discuss it beside the image.”
+2. **Point (15 seconds):** Choose Try the demo. The introduction compacts, an example button area is selected, and an editable note appears. Change the note or send the example. You can also select another area yourself.
 3. **Exchange (20 seconds):** Send. The agent asks how broadly it may adjust the layout. Choose Only the selected area. Expand What your agent receives to show the note and image context remain together.
 4. **Review (20 seconds):** Compare Original and Revision. The sample increases spacing above the button. Resolve the feedback.
 5. **Correct again (15 seconds):** Reopen and explain what still needs attention. Show that the previous messages and original source remain available.
