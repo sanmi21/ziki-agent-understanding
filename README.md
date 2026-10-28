@@ -6,7 +6,7 @@ A focused, independent human–agent interaction prototype. A person can inspect
 
 This is a proposed interaction improvement to Ziki's existing human–agent workflow. Ziki already has owner messages/instructions, questions/escalations, issue discussions, and separate pipeline approvals. The contribution is an issue-specific structured review that makes assumptions, corrections, plan changes, and approval scope easier to inspect. It is not a new underlying messaging system, a production integration, or a measured reduction in errors.
 
-Live submission: https://ziki-agent-understanding.vercel.app/ — the existing deployed main workflow was browser-verified on 28 October 2026. Local packaging edits require a subsequent source push before they appear live. See [submission text and demo script](docs/submission.md).
+Live submission: https://ziki-agent-understanding.vercel.app/ — the main workflow and final comparison wording were browser-verified live on 28 October 2026. See [submission text and demo script](docs/submission.md).
 
 ## Implemented features
 

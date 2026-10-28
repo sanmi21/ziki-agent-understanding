@@ -108,3 +108,12 @@ git status --short
 ```
 
 No deployment command is used. The source push may trigger the user's existing Vercel connection; a completed deployment needs separate verification.
+
+After verifying the updated comparison live, recorded the observed publication result:
+
+```powershell
+git add README.md docs/work-log.md docs/push-commands.md
+git diff --cached --check
+git commit -m "Record verified live submission update"
+git push origin main
+```
