@@ -158,3 +158,16 @@ git status --short
 ```
 
 Syntax and all 23 regression checks passed before publication. Fetch confirmed main had no divergence before committing. The connected Vercel project may update automatically from the push; verify the public title and visual-feedback UI separately.
+
+The replacement push was verified at 933755a. The public page showed the new title and completed the sample feedback/clarification/revision/comparison/resolution workflow. Record that observation with this documentation-only follow-up:
+
+```powershell
+git add README.md docs/work-log.md docs/push-commands.md
+git diff --cached --check
+git commit -m "Record verified Point and reply publication"
+git push origin main
+git fetch origin main
+git rev-parse HEAD
+git rev-parse origin/main
+git status --short
+```

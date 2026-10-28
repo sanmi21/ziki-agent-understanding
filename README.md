@@ -50,7 +50,7 @@ The check script validates JavaScript syntax. The Node tests cover region bounds
 - Branch: main, explicitly approved by the user.
 - Vercel: Framework **Other**, root **./**, no build command, output **dist**. Existing vercel.json is unchanged. No environment variables are needed.
 
-A source push to main can trigger the user's connected Vercel project. No separate deployment command is needed. See [the actual publication commands](docs/push-commands.md). Check the live title **Ziki · Point and reply** before assuming that a new deployment has completed.
+A source push to main can trigger the user's connected Vercel project. No separate deployment command is needed. See [the actual publication commands](docs/push-commands.md). The replacement title and complete sample feedback-to-resolution exchange were browser-verified on the public URL on 28 October 2026. Future pushes still require a separate live check.
 
 ## Limitations
 
