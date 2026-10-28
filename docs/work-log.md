@@ -3,7 +3,7 @@
 ## 2026-10-27 — Review agent understanding
 
 - Objective and starting point: build a separate, focused Ziki interaction prototype, preserve the whimsical homepage, and deploy through Vercel. User approved the exact Git branch name `main`.
-- Checkpoint 1 — Investigation: inspected the live Inbox, in-progress list, and issue #106. Existing issue screens contain Description, Agent decisions, Conversation, and status/bid information. The proposed addition belongs at decision requests and on issue details; it is independent of Ziki Desk's dashboard redesign.
+- Checkpoint 1 — Investigation: inspected the live Inbox, in-progress list, and issue #106. Existing issue screens contain Description, Agent decisions, Conversation, and status/bid information. The proposed addition belongs at decision requests and on issue details.
 - Implementation plan: buildless static HTML/CSS/JavaScript with a pure, tested interaction state machine. Recreate only the relevant navigation and issue context; use labelled sample data, a scripted re-check, a revised plan, scoped approval, and a demonstrable completion/reopen loop. A separate reasoning view explains decisions and limitations.
 - Deployment plan: Vercel static output `dist`; no real Ziki integration or credentials. Repository and deployment preparation continue after implementation and verification.
 - Checkpoint 2 — Implementation: completed Inbox and issue context, integrated review panel, evidence/assumptions, human corrections, scripted re-check, versioned revised plan, confirmation, separate authorization, simulated completion, and reopening. Added a current-pattern comparison and design reasoning/attribution. No live agent or Ziki writes.
@@ -50,3 +50,10 @@
 - Publication: user explicitly authorized committing and pushing the final package to existing `main`. No manual deployment command will run; the connected Vercel project may deploy the source update. Commands are recorded in [push-commands.md](push-commands.md).
 - Outcome: submission package ready; production agent execution and permission enforcement remain outside this scripted prototype. Remote push verification will be reported in the handoff.
 - Publication verification: final package pushed as `27b2867`; fetched remote matches local main. The public Vercel Current pattern view now displays the revised comparison, confirming the connected deployment updated. No deployment command was run. README deployment note updated to reflect that observed result.
+
+## 2026-10-28 — Remove unrelated submission references
+
+- Objective: remove references to another participant and their separate submission from this submission's interface and documentation. Preserve the implemented workflow.
+- Investigation and implementation: removed the unrelated-prototype paragraph from the reasoning view and README, and removed its historical comparison from this log as explicitly requested. Kept references to the original Ziki product and source issue. No workflow or styling changes.
+- Verification: syntax checks, all 21 automated tests, and whitespace checks passed. Repository-wide text search found no remaining participant-name or separate-prototype references. This is a text-only correction; no animation, approval, or model behaviour changed.
+- Outcome: correction prepared for source publication on existing main; no manual deployment command used.

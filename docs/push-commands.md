@@ -117,3 +117,18 @@ git diff --cached --check
 git commit -m "Record verified live submission update"
 git push origin main
 ```
+
+## Submission reference cleanup — 2026-10-28
+
+```powershell
+git status --short
+git branch --show-current
+git fetch origin main
+git rev-list --left-right --count HEAD...origin/main
+git add README.md dist/app.js docs/work-log.md docs/push-commands.md
+git diff --cached --check
+git commit -m "Remove unrelated submission references"
+git push origin main
+```
+
+Syntax checks and 21 tests passed. No manual deployment command used.

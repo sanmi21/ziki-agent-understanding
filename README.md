@@ -15,7 +15,7 @@ Live submission: https://ziki-agent-understanding.vercel.app/ — the main workf
 - Editable human corrections, a clearly scripted re-check, visible revised scope, and plan versions.
 - Direct **Approve plan** and **Review understanding** choices on the request and issue. The optional structured route keeps confirmation separate from approval; a correction invalidates either approval route.
 - Simulated work/outcomes compare the approved plan with the requested scope. The original wrong plan makes the form fit by removing a field and changing validation; the corrected plan preserves behaviour. Pause/correct during work or reopen a result to recover. No actual changes or damage occur.
-- Current-pattern comparison and an explanation of the problem, interaction choices, attribution, and production limitations.
+- Current-pattern comparison and an explanation of the problem, interaction choices and production limitations.
 - Dark/light themes, responsive layouts, keyboard tabs/focus, polite announcements, and tab-local progress with reset.
 
 ## Quick start
@@ -69,12 +69,10 @@ Source repository: [sanmi21/ziki-agent-understanding](https://github.com/sanmi21
 5. Click **Deploy** yourself. When Vercel reports Ready, open its generated URL.
 6. Verify all three presentation views, then complete the review/correction/approval/result flow. Check light mode and reset the demo.
 
-The user requested deployment instructions only. No deployment has been performed or verified by Codex. See [push-commands.md](docs/push-commands.md) for the source publication commands.
+The user requested deployment instructions only. No manual deployment command was run. The connected Vercel update was browser-verified on 28 October 2026. See [push-commands.md](docs/push-commands.md) for the source publication commands.
 
-## Limitations and attribution
+## Limitations and source references
 
 This is a browser-only interaction demonstration, not Ziki's source or a live integration. The agent proposal, re-check, and completion are fictional. No AI agent runs, no repository is inspected, no real tests against Zedu run, and nothing is written to Ziki. Direct approval is intentionally allowed without structured confirmation. Client-side approval gates illustrate the experience; production enforcement requires an authenticated backend.
 
 The sample scenario paraphrases the layout-only report in [Ziki issue #106](https://ziki.dev/issues/106), inspected on 27 October 2026. The supplied reference header displays the user-provided account name, points, and notification badge as a static visual snapshot; these are not live account data. The agent and issue interaction remain sample data. Other contributors' identities are not reproduced. Ziki's styling and locally recreated logo are used for a presentation prototype.
-
-[Michael Churchill's Ziki Desk](https://ziki-desk.vercel.app/) was reviewed as related work, helping distinguish this proposal from a decision-dashboard redesign. No code from that prototype is used. This proposal is independently focused on correcting and agreeing on an agent's understanding inside the issue.
