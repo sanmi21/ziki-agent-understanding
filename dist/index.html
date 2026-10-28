@@ -1,47 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0b152b">
-  <meta name="description" content="An independent Ziki interaction prototype: question an agent's understanding, correct its direction, and agree on a revised plan before work resumes.">
-  <title>Ziki · Review understanding</title>
-  <link rel="icon" href="logo.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="prototype.css">
+  <meta name="theme-color" content="#0a1222">
+  <meta name="description" content="Point and reply: a Ziki visual-feedback prototype. Select a screenshot area, give an agent precise feedback, and review a linked revision.">
+  <title>Ziki · Point and reply</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
   <script type="module" src="app.js"></script>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to prototype</a>
-  <header class="nav"><div class="nav-inner">
-    <a class="brand" href="#prototype" aria-label="Ziki prototype home"><img src="logo.svg" alt="">ziki</a>
-    <span class="nav-divider"></span><span class="workspace-name">Zedu <span class="muted">⌄</span></span>
-    <span class="product-pill"><span>◉</span> Product</span><span class="nav-extra"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h4l7-5v14l-7-5H4zM19 8q4 4 0 8M10 15l1 5"/></svg>Marketing</span><span class="nav-extra"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 4v6c0 4-5 7-8 8-3-1-8-4-8-8V7zM8 12l3 3 5-6"/></svg>Security</span>
-    <span class="nav-spacer"></span>
-    <span class="reference-agents prototype-only"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3M9 3h6M5 9h14v11H5zM2 12v5m20-5v5M9 13h.01M15 13h.01M9 17h6"/></svg> Agents <span class="muted">⌄</span></span>
-    <span class="reference-account prototype-only"><span class="reference-avatar">OA</span> Oluwasanmi Adewumi <span class="muted">⌄</span></span>
-    <span class="reference-points prototype-only"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8v6a4 4 0 0 1-8 0zM8 5H4v3a4 4 0 0 0 5 4m7-7h4v3a4 4 0 0 1-5 4M12 13v6m-4 2h8"/></svg> 1494 pts</span>
-    <span class="reference-bell prototype-only" aria-label="13 notifications in reference screenshot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 7 3 9H3c0-2 3-2 3-9m6 12h.01"/></svg><span>13</span></span>
-    <span class="demo-account"><span class="avatar">D</span> Demo workspace</span>
-    <button class="icon-button" id="theme" aria-label="Switch to light mode" title="Switch theme">☼</button>
+  <a class="skip" href="#main">Skip to workspace</a>
+  <header class="global-nav"><div class="nav-inner">
+    <a class="brand" href="#issue" aria-label="Ziki issue"><img src="logo.svg" alt="">ziki</a>
+    <span class="nav-divider"></span><span class="workspace">Zedu <span class="muted">⌄</span></span>
+    <a class="nav-product" href="#issue"><span class="nav-dot"></span>Product</a>
+    <span class="nav-quiet">Marketing</span><span class="nav-quiet">Security</span>
+    <div class="nav-right"><span class="demo-badge"><i></i> Interactive prototype</span><button class="icon-button" id="theme" aria-label="Switch to light mode" title="Switch theme"></button><span class="human-avatar" title="Demo user">OA</span></div>
   </div></header>
-  <section class="introduction" aria-labelledby="intro-title"><div>
-    <p class="eyebrow">HUMAN + AGENT INTERACTION <span class="eyebrow-line"></span> A FOCUSED ZIKI PROPOSAL</p>
-    <h1 id="intro-title">Before you approve,<br>get on the same page<span class="blue">.</span></h1>
-    <p class="intro-copy">Question the understanding. Correct the direction.<br class="desktop-break"> Agree on what happens next.</p>
-  </div><div class="intro-aside">
-    <div class="flow-label"><span class="flow-number">01</span><span>Understand</span><span class="flow-arrow">↗</span></div>
-    <div class="flow-label"><span class="flow-number">02</span><span>Challenge & correct</span><span class="flow-arrow">↗</span></div>
-    <div class="flow-label"><span class="flow-number">03</span><span>Agree & continue</span><span class="flow-check">✓</span></div>
-    <p>One issue. One shared understanding.</p>
-  </div></section>
-  <div class="presentation-bar"><div class="presentation-inner">
-    <nav class="view-switch" aria-label="Presentation views">
-      <button data-view="prototype" class="selected" aria-pressed="true">Try the proposal</button>
-      <button data-view="current" aria-pressed="false">Current pattern</button>
-      <button data-view="reasoning" aria-pressed="false">Why this change</button>
-    </nav>
-    <span class="sample-label"><span class="sample-dot"></span> Interactive prototype · sample data</span>
-  </div></div>
   <main id="main" tabindex="-1"></main>
-  <footer><span><img src="logo.svg" alt=""> An independent Ziki interaction proposal</span><span>Sample interaction · reference workspace header. <button class="text-button" id="footer-reset">Reset demo</button> · <button class="text-button" id="footer-theme">Switch theme</button> · No live Ziki changes. <a href="https://ziki.dev" target="_blank" rel="noreferrer">Original Ziki ↗</a></span></footer>
-  <div id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div>
-</body>
-</html>
+  <footer><span><img src="logo.svg" alt=""> A focused Ziki interaction proposal</span><span>Sample attachment · scripted agent <b>·</b> <button data-action="about">Why this change?</button><b>·</b><button data-action="reset">Reset demo</button></span></footer>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div><div id="toast" role="status"></div>
+  <dialog id="info-dialog"><div id="dialog-content"></div></dialog>
+</body></html>

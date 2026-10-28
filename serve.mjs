@@ -1,7 +1,7 @@
 import {createServer} from 'node:http';
 import {readFile} from 'node:fs/promises';
 const root=new URL('./dist/',import.meta.url);
-const allowed=new Set(['index.html','styles.css','prototype.css','app.js','model.js','logo.svg']);
+const allowed=new Set(['index.html','styles.css','app.js','model.js','logo.svg']);
 const types={html:'text/html; charset=utf-8',css:'text/css; charset=utf-8',js:'text/javascript; charset=utf-8',svg:'image/svg+xml'};
 createServer(async(req,res)=>{
   const file=new URL(req.url,'http://localhost').pathname.slice(1)||'index.html';

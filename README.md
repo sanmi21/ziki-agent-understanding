@@ -1,53 +1,38 @@
-# Ziki — Review understanding
+# Ziki — Point and reply
 
-A focused, independent human–agent interaction prototype. A person can inspect an agent's understanding, challenge an assumption, correct its direction, and confirm a revised plan before authorizing work.
-
-## Submission positioning
-
-This is a proposed interaction improvement to Ziki's existing human–agent workflow. Ziki already has owner messages/instructions, questions/escalations, issue discussions, and separate pipeline approvals. The contribution is an issue-specific structured review that makes assumptions, corrections, plan changes, and approval scope easier to inspect. It is not a new underlying messaging system, a production integration, or a measured reduction in errors.
-
-Live submission: https://ziki-agent-understanding.vercel.app/ — the main workflow and final comparison wording were browser-verified live on 28 October 2026. See [submission text and demo script](docs/submission.md).
+A focused UI proposal for human–agent visual feedback in Ziki. Select an area of an issue attachment, explain what needs attention, answer the agent in context, and compare a linked sample revision. This replaces the earlier plan-review prototype; that version remains in Git history.
 
 ## Implemented features
 
-- Screenshot-matched Ziki Inbox composition on **Try the proposal**: app-first header, toolbar, status navigation, Inbox explanation with agent panel, three Inbox lists, and a sample request. Presentation navigation sits below the app. Only the screens relevant to this proposal are recreated.
-- Integrated review panel with Understanding, Evidence, and Changes tabs.
-- Editable human corrections, a clearly scripted re-check, visible revised scope, and plan versions.
-- Direct **Approve plan** and **Review understanding** choices on the request and issue. The optional structured route keeps confirmation separate from approval; a correction invalidates either approval route.
-- Simulated work/outcomes compare the approved plan with the requested scope. The original wrong plan makes the form fit by removing a field and changing validation; the corrected plan preserves behaviour. Pause/correct during work or reopen a result to recover. No actual changes or damage occur.
-- Current-pattern comparison and an explanation of the problem, interaction choices and production limitations.
-- Dark/light themes, responsive layouts, keyboard tabs/focus, polite announcements, and tab-local progress with reset.
+- Ziki-style issue context and an integrated screenshot workspace. Close the viewer to see the issue and its linked feedback conversations.
+- Click to place a pin or drag a region. A named-area picker provides a keyboard-friendly alternative.
+- Editable feedback before sending; pending feedback can also be edited or removed, with undo for removal.
+- The human and simulated agent use the same record: issue, image version, region, exact feedback, and direction.
+- Contextual clarification with two choices and a custom answer. Area-only and surrounding-layout choices produce different preset image changes.
+- New revision versions preserve the source image. Original/revision switching, side-by-side comparison on desktop, and zoom/fit controls.
+- Feedback can be resolved, reopened with a follow-up, or kept alongside other independent pins. Pins stay on their original image versions.
+- Tab-local session persistence, reset, dark/light themes, responsive layout, reduced-motion support, focus indicators, and live announcements.
 
 ## Quick start
 
-Requires Node.js 18 or newer. There are no dependencies to install and no build step.
+Requires Node.js 18 or newer. No dependencies, install step, API keys, or build step are required.
 
 ```sh
 npm run dev
 ```
 
-Open http://127.0.0.1:4180. The server binds only to this computer. An optional Google Font falls back to local sans-serif fonts offline.
+Open http://127.0.0.1:4180/. The server binds to this computer only. Opening index.html directly from the filesystem does not support its ES modules reliably. System fonts keep the UI self-contained; no external font request is required.
 
 ## Usage
 
-1. In **Try the proposal → Inbox → Need your input**, choose **Review understanding** to question the plan, or **Approve plan v1** to authorize the shown proposal directly. Other Inbox categories show the reference-style empty state; **Clear filters** returns to the sample request. Status tabs open a focused sample issue list. Search filters that one issue; other toolbar tools explain their prototype scope.
-2. Read the proposed approach and inspect **Evidence**. The layout-only issue conflicts with the sample agent's proposal to remove fields and change validation.
-3. Select **That's outside scope** or enter your own correction, then send it for re-evaluation.
-4. Choose **Run simulated re-check**. Review the changed plan and constraints.
-5. Approve the revised plan directly if you already understand and agree. Alternatively, check the three agreement statements, confirm understanding, and then separately approve that plan version.
-6. Show the simulated outcome. Reopen/correct the result, or reset to replay.
+1. Choose **Try the button area**, select a named area with **Choose an area**, or click/drag on the screenshot.
+2. Type feedback or choose **Use example feedback**, then **Send to agent**. Ctrl/Cmd+Enter also sends the feedback.
+3. The scripted agent asks how broadly it may adjust the layout. Choose **Only the selected area**, **The surrounding layout too**, or type your own direction.
+4. A sample revision appears. Switch between Original and Revision or choose **Compare images**.
+5. Choose **Resolve feedback** or **Needs another pass**. A resolved thread can be reopened; its earlier messages and image versions remain available.
+6. Close the attachment to see the issue and its feedback entries. **Reset demo** clears this tab's sample state after confirmation.
 
-To demonstrate the risk: reset → **Approve plan v1** → **Show simulated outcome**. The visual-fit example passes, but preserving fields and validation fails. Choose **Reopen and correct**, run the simulated re-check, then approve v2 directly to compare. A bad outcome comes from the wrong plan, not automatically from using direct approval. **Pause and correct** can also stop the simulated work before the result.
-
-Corrections can also be sent during simulated work. They pause that workflow and clear its previous approval. Free-text input is recorded exactly, but the response is a fixed signup scenario: the prototype does not interpret arbitrary constraints. Do not enter sensitive information.
-
-## Architecture
-
-- [dist/model.js](dist/model.js): pure state transitions and validation of restored tab state, including direct/reviewed approval mode and plan version. Phases: request → rechecking → revised → agreed → working → delivered. Corrections return the flow to rechecking; reopening a result does the same.
-- [dist/app.js](dist/app.js): page rendering, correction entry, keyboard controls, theme, and `sessionStorage` progress. User-entered content is escaped before rendering.
-- [dist/styles.css](dist/styles.css): presentation and issue/review layout. [dist/prototype.css](dist/prototype.css) scopes the screenshot-matched Inbox and app header to the proposal view, including responsive and light-mode variants.
-- [serve.mjs](serve.mjs): allowlisted local static server.
-- [checks/model.test.mjs](checks/model.test.mjs): meaningful state/approval, persistence, and asset checks.
+See [the submission and demonstration guide](docs/submission.md) for a short presentation and [the implementation notes](docs/point-and-reply.md) for state, inputs, limits, and regression steps.
 
 ## Verification
 
@@ -56,23 +41,21 @@ npm run check
 npm test
 ```
 
-Browser regression workflow: perform the six steps above; use Evidence and Changes; correct an already approved plan and verify approval clears; reload to restore tab progress; reset; repeat at phone width and in light mode. Use keyboard Tab and arrow keys on the review tabs. All 21 automated checks and syntax checks passed. The desktop browser completed the main exchange through reopening, restored state after reload, and visually checked light mode. Phone-width visual verification remains outstanding. Details are in the [work log](docs/work-log.md).
+The check script validates JavaScript syntax. The Node tests cover region bounds, shared agent input, clarification gating, scope-dependent revisions, source immutability, version anchoring, resolution, reopening, editing, deletion, persistence validation, and deployment assets. Browser verification results are recorded in [the work log](docs/work-log.md); automated model checks alone do not establish that the visual workflow works.
 
-## Vercel deployment — user-operated
+## Existing repository and deployment
 
-Source repository: [sanmi21/ziki-agent-understanding](https://github.com/sanmi21/ziki-agent-understanding).
+- Repository: https://github.com/sanmi21/ziki-agent-understanding
+- Existing public URL: https://ziki-agent-understanding.vercel.app/
+- Branch: main, explicitly approved by the user.
+- Vercel: Framework **Other**, root **./**, no build command, output **dist**. Existing vercel.json is unchanged. No environment variables are needed.
 
-1. In Vercel, choose **Add New → Project** and import `sanmi21/ziki-agent-understanding`.
-2. Set **Framework Preset** to **Other** and keep **Root Directory** as `./`.
-3. Confirm **Build Command** is empty (enable its override if needed) and **Output Directory** is `dist`. The tracked [vercel.json](vercel.json) already declares these settings.
-4. No environment variables or custom install command are required. This project has no dependencies and no build step.
-5. Click **Deploy** yourself. When Vercel reports Ready, open its generated URL.
-6. Verify all three presentation views, then complete the review/correction/approval/result flow. Check light mode and reset the demo.
+A source push to main can trigger the user's connected Vercel project. No separate deployment command is needed. See [the actual publication commands](docs/push-commands.md). Check the live title **Ziki · Point and reply** before assuming that a new deployment has completed.
 
-The user requested deployment instructions only. No manual deployment command was run. The connected Vercel update was browser-verified on 28 October 2026. See [push-commands.md](docs/push-commands.md) for the source publication commands.
+## Limitations
 
-## Limitations and source references
+This is an independent browser prototype, not Ziki's source or a production integration. It sends no messages or writes to Ziki. Agent replies are scripted; typed feedback is retained exactly but is not interpreted by an AI model. Revisions are preset spacing variations chosen by the nearest named area and the explicit scope choice. They do not promise to fulfil arbitrary instructions. Custom answers are recorded and displayed; the sample renderer does not infer their meaning.
 
-This is a browser-only interaction demonstration, not Ziki's source or a live integration. The agent proposal, re-check, and completion are fictional. No AI agent runs, no repository is inspected, no real tests against Zedu run, and nothing is written to Ziki. Direct approval is intentionally allowed without structured confirmation. Client-side approval gates illustrate the experience; production enforcement requires an authenticated backend.
+The signup preview is a newly illustrated SVG sample, not the original issue attachment. It supplies work to discuss inside Ziki; this project does not implement a signup fix. The issue context is adapted from [Ziki issue #107](https://ziki.dev/issues/107), inspected on 28 October 2026. Navigation is limited to the relevant issue and attachment views. No code approval, merge authorization, or issue resolution occurs when feedback is marked resolved.
 
-The sample scenario paraphrases the layout-only report in [Ziki issue #106](https://ziki.dev/issues/106), inspected on 27 October 2026. The supplied reference header displays the user-provided account name, points, and notification badge as a static visual snapshot; these are not live account data. The agent and issue interaction remain sample data. Other contributors' identities are not reproduced. Ziki's styling and locally recreated logo are used for a presentation prototype.
+Feedback persists only in this browser tab. Up to 30 threads and 49 revisions are supported. Theme choice is saved separately in local storage. A production version needs authenticated recipients, persistent image/annotation records, actual message delivery, and agent-generated revision attachments. Class-wide novelty and improved usability have not been proven by this prototype.

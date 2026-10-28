@@ -132,3 +132,29 @@ git push origin main
 ```
 
 Syntax checks and 21 tests passed. No manual deployment command used.
+
+
+## Point and reply replacement — 2026-10-28
+
+The user authorized replacing the existing prototype on main in the same repository and Vercel project. The earlier implementation remains in Git history. No manual deployment command is used.
+
+```powershell
+git status --short
+git branch --show-current
+git remote -v
+git fetch origin main
+git rev-list --left-right --count HEAD...origin/main
+npm run check
+npm test
+git diff --check
+git add README.md package.json serve.mjs checks/model.test.mjs dist docs
+git diff --cached --check
+git commit -m "Replace review prototype with Point and reply"
+git push origin main
+git fetch origin main
+git rev-parse HEAD
+git rev-parse origin/main
+git status --short
+```
+
+Syntax and all 23 regression checks passed before publication. Fetch confirmed main had no divergence before committing. The connected Vercel project may update automatically from the push; verify the public title and visual-feedback UI separately.

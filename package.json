@@ -1,6 +1,6 @@
 {
-  "name": "ziki-shared-understanding",
-  "version": "1.0.0",
+  "name": "ziki-point-and-reply",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "scripts": {
