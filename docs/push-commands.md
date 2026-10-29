@@ -194,3 +194,31 @@ git status --short
 ```
 
 No deployment command is used; source updates use the existing GitHub/Vercel connection.
+
+## Visual instructions and gesture controls — 2026-10-29
+
+Publication sequence for the user-authorized push, with syntax and all 39 tests checked before committing:
+
+```powershell
+git status --short
+git branch --show-current
+git remote -v
+git diff --stat
+git fetch origin main
+git rev-list --left-right --count HEAD...origin/main
+git log -1 --oneline
+npm run check
+npm test
+git diff --check
+git add README.md dist/app.js dist/model.js dist/intent.js dist/styles.css package.json serve.mjs checks/intent.test.mjs docs/point-and-reply.md docs/submission.md docs/work-log.md docs/push-commands.md docs/gesture-input-desktop.png docs/gesture-input-phone.png docs/visual-intent-desktop.png docs/visual-intent-phone.png docs/visual-scope-choices.png
+git diff --cached --check
+git diff --cached --stat
+git commit -m "Add visual instructions and gesture-based agent feedback"
+git push origin main
+git fetch origin main
+git rev-parse HEAD
+git rev-parse origin/main
+git status --short
+```
+
+The connected Vercel project may update automatically. No manual deployment command is part of this sequence. Check the public page separately before claiming it has updated.
